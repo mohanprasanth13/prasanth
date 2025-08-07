@@ -1,93 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Git Remote Repository Input</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catch the Color Box Game</title>
   <style>
     body {
+      margin: 0;
+      background: linear-gradient(135deg, #00feba, #5b548a);
       font-family: Arial, sans-serif;
-      background-color: #e9f0f4;
-      padding: 30px;
-    }
-    .box {
-      background-color: #fff;
-      border-radius: 10px;
-      max-width: 500px;
-      padding: 25px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-    h2 {
       text-align: center;
-      color: #333;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      box-sizing: border-box;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
-      background-color: #28a745;
-      border: none;
       color: white;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
     }
-    button:hover {
-      background-color: #218838;
-    }
-    #output {
+
+    h1 {
       margin-top: 20px;
-      background-color: #f1f1f1;
-      padding: 15px;
-      border-radius: 5px;
-      color: #000;
-      white-space: pre-wrap;
-      font-family: monospace;
+    }
+
+    #game {
+      position: relative;
+      width: 100vw;
+      height: 80vh;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    #box {
+      width: 60px;
+      height: 60px;
+      background-color: red;
+      position: absolute;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      box-shadow: 0 0 10px white;
+    }
+
+    #score {
+      font-size: 24px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <h1>🎯 Catch the Color Box</h1>
+  <div id="score">Score: 0</div>
+  <div id="game">
+    <div id="box"></div>
+  </div>
 
-<div class="box">
-  <h2>Git Repository Manager</h2>
-  <form id="repoForm">
-    <label for="remoteName">Remote Name</label>
-    <input type="text" id="remoteName" placeholder="e.g. origin" required>
+  <script>
+    const box = document.getElementById("box");
+    const scoreText = document.getElementById("score");
+    const colors = ["red", "yellow", "green", "blue", "purple", "orange", "pink"];
+    let score = 0;
 
-    <label for="remoteUrl">Remote URL</label>
-    <input type="text" id="remoteUrl" placeholder="e.g. https://github.com/username/repo.git" required>
+    function moveBox() {
+      const game = document.getElementById("game");
+      const maxX = game.clientWidth - 60;
+      const maxY = game.clientHeight - 60;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      const color = colors[Math.floor(Math.random() * colors.length)];
 
-    <button type="submit">Generate Git Command</button>
-  </form>
-
-  <div id="output"></div>
-</div>
-
-<script>
-  document.getElementById("repoForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById("remoteName").value.trim();
-    const url = document.getElementById("remoteUrl").value.trim();
-
-    if (name && url) {
-      const command = `git remote add ${name} ${url}`;
-      document.getElementById("output").textContent = `Run this in your terminal:\n\n${command}`;
-    } else {
-      document.getElementById("output").textContent = "❌ Please fill both fields.";
+      box.style.left = `${x}px`;
+      box.style.top = `${y}px`;
+      box.style.backgroundColor = color;
     }
-  });
-</script>
 
+    box.addEventListener("click", () => {
+      score++;
+      scoreText.textContent = `Score: ${score}`;
+      moveBox();
+    });
+
+    // Move the box every 1.5 seconds if not clicked
+    setInterval(moveBox, 1500);
+
+    // First move
+    moveBox();
+  </script>
 </body>
 </html>
