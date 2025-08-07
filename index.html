@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Git Remote Repository Input</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e9f0f4;
+      padding: 30px;
+    }
+    .box {
+      background-color: #fff;
+      border-radius: 10px;
+      max-width: 500px;
+      padding: 25px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    #output {
+      margin-top: 20px;
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 5px;
+      color: #000;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Git Repository Manager</h2>
+  <form id="repoForm">
+    <label for="remoteName">Remote Name</label>
+    <input type="text" id="remoteName" placeholder="e.g. origin" required>
+
+    <label for="remoteUrl">Remote URL</label>
+    <input type="text" id="remoteUrl" placeholder="e.g. https://github.com/username/repo.git" required>
+
+    <button type="submit">Generate Git Command</button>
+  </form>
+
+  <div id="output"></div>
+</div>
+
+<script>
+  document.getElementById("repoForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("remoteName").value.trim();
+    const url = document.getElementById("remoteUrl").value.trim();
+
+    if (name && url) {
+      const command = `git remote add ${name} ${url}`;
+      document.getElementById("output").textContent = `Run this in your terminal:\n\n${command}`;
+    } else {
+      document.getElementById("output").textContent = "❌ Please fill both fields.";
+    }
+  });
+</script>
+
+</body>
+</html>
