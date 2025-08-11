@@ -1,84 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Catch the Color Box Game</title>
-  <style>
-    body {
-      margin: 0;
-      background: linear-gradient(135deg, #00feba, #5b548a);
-      font-family: Arial, sans-serif;
-      text-align: center;
-      color: white;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohan Prasanth - Resume</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: sandybrown;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-    h1 {
-      margin-top: 20px;
-    }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 25px 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
 
-    #game {
-      position: relative;
-      width: 100vw;
-      height: 80vh;
-      overflow: hidden;
-      margin-top: 20px;
-    }
+        header {
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
 
-    #box {
-      width: 60px;
-      height: 60px;
-      background-color: red;
-      position: absolute;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      box-shadow: 0 0 10px white;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #bb751b;
+        }
 
-    #score {
-      font-size: 24px;
-      margin-top: 10px;
-    }
-  </style>
+        header p a {
+            color: #141414;
+            text-decoration: none;
+        }
+
+        header p a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #0c0c0c;
+            border-bottom: 2px solid #141414;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>🎯 Catch the Color Box</h1>
-  <div id="score">Score: 0</div>
-  <div id="game">
-    <div id="box"></div>
-  </div>
+    <div class="container">
+        <header>
+            <h1>Mohan Prasanth M</h1>
+            <p><strong>Phone:</strong> +91 8056796011 | 
+                <strong>Email:</strong> mohanprasanth13092004@gmail.com</p>
+        </header>
 
-  <script>
-    const box = document.getElementById("box");
-    const scoreText = document.getElementById("score");
-    const colors = ["red", "yellow", "green", "blue", "purple", "orange", "pink"];
-    let score = 0;
+        <section>
+            <h2>Profile Summary</h2>
+            <p>
+                Aspiring Software Engineer – Computer Science Graduate. Self-taught software developer with expertise in Java and web technologies. Currently improving skills through Python and JavaScript. 
+                Successfully developed and implemented several projects using Machine Learning, Java, and Python. Strong problem-solving abilities and a passion for learning new technologies. 
+                Seeking opportunities to contribute technical expertise in a dynamic environment.
+            </p>
+        </section>
 
-    function moveBox() {
-      const game = document.getElementById("game");
-      const maxX = game.clientWidth - 60;
-      const maxY = game.clientHeight - 60;
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-      const color = colors[Math.floor(Math.random() * colors.length)];
+        <section>
+            <h2>Education</h2>
+            <ul>
+                <li>
+                    <strong>Muthayammal Engineering College, Rasipuram</strong><br>
+                    Bachelor of Engineering in Computer Science (Sept 2022 – May 2026)<br>
+                    CGPA: 7.50<br>
+                    Coursework: Data Structures and Algorithms, Operating Systems, OOP, IoT, Software Engineering
+                </li>
+                <li>
+                    <strong>Government Higher Secondary School</strong><br>
+                    HSC (June 2021 – March 2022) – Percentage: 71.1%
+                </li>
+                <li>
+                    <strong>Raj Matriculation Higher Secondary School, Salem</strong><br>
+                    SSLC (June 2019 – March 2020) – Percentage: 95.4%
+                </li>
+            </ul>
+        </section>
 
-      box.style.left = `${x}px`;
-      box.style.top = `${y}px`;
-      box.style.backgroundColor = color;
-    }
+        <section>
+            <h2>Technical Skills</h2>
+            <p><strong>Languages:</strong> Java, Python, SQL, HTML, CSS, JavaScript</p>
+            <p><strong>Software:</strong> Eclipse, Python Idle, VS Code, MySQL, MS Office</p>
+            <p><strong>Familiar with:</strong> Data Structures</p>
+        </section>
 
-    box.addEventListener("click", () => {
-      score++;
-      scoreText.textContent = `Score: ${score}`;
-      moveBox();
-    });
+        <section>
+            <h2>Internships</h2>
+            <ul>
+                <li>Java Microservices – Zealous Tech Corp, Salem (30 Days) – June 2024</li>
+                <li>Full Stack Development (Java) – Way2Skills, Namakkal (25 Days) – Dec 2023–Jan 2024</li>
+                <li>Web Development – Edwyna, Namakkal (15 Days) – 2024–2025</li>
+            </ul>
+        </section>
 
-    // Move the box every 1.5 seconds if not clicked
-    setInterval(moveBox, 1500);
+        <section>
+            <h2>Projects</h2>
+            <p>
+                <strong>Systematic Railway Gate Control:</strong> Developed an IoT-based automated railway gate system using IR sensors, NodeMCU, and servo motors to enhance safety and efficiency at railway crossings. Enabled real-time train detection, gate control, and alert notifications using Blynk IoT platform and Arduino IDE.<br>
+                <em>Tools Used:</em> Embedded C, Arduino IDE, Blynk IDE
+            </p>
+        </section>
 
-    // First move
-    moveBox();
-  </script>
+        <section>
+            <h2>Certifications</h2>
+            <ul>
+                <li>NPTEL: Foundation of Cloud IoT Edge ML (64%) – Elite</li>
+                <li>NPTEL: Distributed System (64%) – Elite</li>
+                <li>AWS Academy: Cloud Foundation</li>
+                <li>ICT Academy Certified – Technical Skill Development Program</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Paper Presentation</h2>
+            <p>“ChatGPT: Revolutionizing AI in Apps” at Sona College of Technology, Salem</p>
+        </section>
+
+        <section>
+            <h2>Workshops</h2>
+            <ul>
+                <li>Master Embedded System – KSR College of Technology, Tiruchengode</li>
+                <li>Web Development – Sona College of Technology, Salem</li>
+            </ul>
+        </section>
+    </div>
 </body>
 </html>
